@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca Comunista Internacionalista</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; background: #f4f4f4; }
+    h1 { color: #b71c1c; }
+    a { color: #b71c1c; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 900px; margin: auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>☭ Biblioteca Comunista Internacionalista ☭</h1>
+    <p>Bem-vindo / Bienvenido — Welcome to the shared library for the Internationalist Communist Discord server.</p>
+    
+    <h2>Escolha o idioma / Elige el idioma</h2>
+    <p>
+      <a href="/pt/">🇧🇷 Português (Brazil/Portugal)</a> | 
+      <a href="/es/">🇪🇸 Español</a>
+    </p>
+
+    <p><strong>Como usar:</strong> Clique nos links abaixo para ver as listas de leitura. Os PDFs abrem ou baixam diretamente.</p>
+    
+    <p>Esta é uma biblioteca estática e gratuita para estudo do Comunismo de Esquerda / Izquierda Comunista.</p>
+  </div>
+</body>
+</html>
