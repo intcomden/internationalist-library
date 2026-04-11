@@ -1,0 +1,22 @@
+title: Internationalist Communist Library
+description: Official library for the Internationalist Communist Discord server
+
+# Collections
+collections:
+  sections:
+    output: true
+    permalink: /:language/:slug/
+
+defaults:
+  - scope:
+      path: ""
+      type: "sections"
+    values:
+      layout: "section"
+
+# Multilingual
+languages: ["en", "pt", "es", "it"]
+default_language: "en"
+
+# Build settings
+markdown: kramdown
