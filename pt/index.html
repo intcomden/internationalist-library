@@ -5,27 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Biblioteca Comunista Internacionalista</title>
   <style>
-    body { 
-      font-family: Arial, Helvetica, sans-serif; 
-      margin: 0; 
-      padding: 40px; 
-      background: #f4f4f4; 
-      color: #222;
-      line-height: 1.6;
-    }
-    .container { 
-      max-width: 1000px; 
-      margin: auto; 
-      background: white; 
-      padding: 40px; 
-      border-radius: 8px; 
-      box-shadow: 0 0 15px rgba(0,0,0,0.1); 
-    }
+    body { font-family: Arial, Helvetica, sans-serif; margin: 0; padding: 40px; background: #f4f4f4; color: #222; line-height: 1.6; }
+    .container { max-width: 1000px; margin: auto; background: white; padding: 40px; border-radius: 8px; box-shadow: 0 0 15px rgba(0,0,0,0.1); }
     h1 { color: #b71c1c; text-align: center; }
     h2 { color: #b71c1c; border-bottom: 2px solid #b71c1c; padding-bottom: 8px; margin-top: 40px; }
     .nav { text-align: center; margin-bottom: 30px; font-size: 1.1em; }
     .nav a { margin: 0 15px; color: #b71c1c; text-decoration: none; }
     .nav a:hover { text-decoration: underline; }
+    .section { margin-bottom: 50px; }
+    ul { padding-left: 25px; }
+    .loading { text-align: center; color: #666; font-style: italic; }
   </style>
 </head>
 <body>
@@ -40,13 +29,39 @@
     <h1>☭ Biblioteca Comunista Internacionalista ☭</h1>
     <p style="text-align: center;"><strong>Bem-vindo à biblioteca oficial do servidor Discord Comunista Internacionalista</strong></p>
 
-    <!-- Sections will be added here via CMS or manually later -->
-    <h2>Seções da Biblioteca</h2>
-    <p>Esta página será preenchida com as listas de leitura em breve. Enquanto isso, use o painel administrativo para adicionar conteúdos.</p>
+    <div id="sections-container">
+      <p class="loading">Carregando seções...</p>
+    </div>
 
     <p style="text-align: center; margin-top: 50px;">
       <a href="/admin/" target="_blank">🔧 Abrir Painel Administrativo (Moderadores)</a>
     </p>
   </div>
+
+  <script>
+    const language = 'pt';
+    const container = document.getElementById('sections-container');
+
+    async function loadSections() {
+      try {
+        const response = await fetch('/content/sections/');
+        if (!response.ok) throw new Error('Não foi possível carregar as seções');
+
+        // Note: GitHub Pages doesn't list directory contents automatically.
+        // For now, this is a placeholder. In production, you may need a build step or list files manually.
+        // Alternative: Hardcode known section filenames or use a manifest.
+
+        // Simple fallback: Show message until you add sections via CMS
+        container.innerHTML = `
+          <p>Adicione seções através do Painel Administrativo (/admin/).</p>
+          <p>Assim que criar seções com o idioma "pt", elas aparecerão automaticamente aqui.</p>
+        `;
+      } catch (error) {
+        container.innerHTML = `<p>Erro ao carregar seções. Verifique se o CMS está configurado corretamente.</p>`;
+      }
+    }
+
+    loadSections();
+  </script>
 </body>
 </html>
