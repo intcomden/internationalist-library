@@ -1,22 +1,36 @@
 title: Internationalist Communist Library
-description: Official library for the Internationalist Communist Discord server
+description: Official shared library for the Internationalist Communist Discord server
+
+# Basic settings
+url: "https://yourusername.github.io"   # Change to your actual GitHub Pages URL
+baseurl: ""                             # Leave empty for user/org sites
 
 # Collections
 collections:
   sections:
     output: true
-    permalink: /:language/:slug/
+    permalink: "/:language/:slug/"
 
+# Default front matter
 defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
   - scope:
       path: ""
       type: "sections"
     values:
       layout: "section"
 
-# Multilingual
-languages: ["en", "pt", "es", "it"]
-default_language: "en"
-
 # Build settings
 markdown: kramdown
+highlighter: rouge
+
+# Exclude files from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - .gitignore
