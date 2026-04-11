@@ -3,18 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin - Internationalist Communist Library</title>
+  <title>Admin • Internationalist Communist Library</title>
   <script src="https://unpkg.com/@sveltia/cms@latest/dist/sveltia-cms.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/@sveltia/cms@latest/dist/sveltia-cms.css">
+  <style>
+    body { margin: 0; font-family: system-ui, sans-serif; }
+  </style>
 </head>
 <body>
-  <!-- Sveltia CMS will automatically load here -->
   <script>
-    window.SveltiaCMS.init({
-      config: {
-        // The config file will be loaded automatically from admin/config.yml
-      }
-    });
+    window.SveltiaCMS.init();
   </script>
 </body>
 </html>
