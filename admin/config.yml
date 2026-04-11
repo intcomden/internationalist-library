@@ -1,66 +1,32 @@
-# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
-
 backend:
   name: github
-  repo: intcomden/internationalist-library
+  repo: YOUR_GITHUB_USERNAME/YOUR_REPO_NAME   # ← CHANGE THIS (e.g. denver123/leftcom-library)
   branch: main
 
-# Where uploaded PDFs and media will be stored
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
 
 collections:
-
-  # 1. Site Settings
-  - name: "settings"
-    label: "Site Settings"
-    files:
-      - name: "general"
-        label: "General Settings"
-        file: "data/settings.yml"
-        fields:
-          - { label: "Site Title", name: "site_title", widget: "string", default: "Internationalist Communist Library" }
-          - { label: "Welcome Message", name: "welcome", widget: "text" }
-
-  # 2. Dynamic Reading Sections (This is the main improvement)
   - name: "sections"
     label: "Reading Sections"
-    folder: "content/sections"
+    folder: "_sections"
     create: true
     extension: "md"
     slug: "{{language}}-{{slug}}"
-    identifier_field: "section_title"
     fields:
-      - { label: "Section Title", name: "section_title", widget: "string", required: true }
-      - { label: "Language", name: "language", widget: "select", options: ["en", "pt", "es", "it"], default: "en" }
-      - { label: "Section Order", name: "order", widget: "number", default: 10, hint: "Lower numbers appear first" }
-      - { label: "Description (optional)", name: "description", widget: "text" }
-      - { label: "Content / Reading List", name: "body", widget: "markdown", required: true, hint: "List the texts here using Markdown (e.g. - Title - Author)" }
-      - { label: "Tags", name: "tags", widget: "list", default: ["leftcom"] }
+      - { label: "Section Title", name: "title", widget: "string", required: true }
+      - { label: "Language", name: "language", widget: "select", options: ["en", "pt", "es", "it", "fr", "de"], default: "en" }
+      - { label: "Order", name: "order", widget: "number", default: 10 }
+      - { label: "Content (Markdown List)", name: "body", widget: "markdown", required: true }
 
-  # 3. Individual Texts / Resources (for detailed entries)
   - name: "texts"
-    label: "Individual Texts & Resources"
-    folder: "content/texts"
+    label: "Individual Texts"
+    folder: "_texts"
     create: true
     extension: "md"
-    slug: "{{language}}-{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string", required: true }
       - { label: "Author", name: "author", widget: "string" }
-      - { label: "Language", name: "language", widget: "select", options: ["en", "pt", "es", "it"], default: "en" }
-      - { label: "Section", name: "section", widget: "string", hint: "e.g. Critique of Political Economy" }
-      - { label: "Short Description", name: "description", widget: "text" }
-      - { label: "PDF File", name: "pdf", widget: "file" }
+      - { label: "Language", name: "language", widget: "select", options: ["en", "pt", "es", "it"] }
+      - { label: "PDF", name: "pdf", widget: "file" }
       - { label: "Audiobook Link", name: "audiobook", widget: "string" }
-      - { label: "Tags", name: "tags", widget: "list", default: ["leftcom"] }
-
-  # 4. Language Management (for future languages)
-  - name: "languages"
-    label: "Available Languages"
-    folder: "content/languages"
-    create: true
-    fields:
-      - { label: "Language Code", name: "code", widget: "string", hint: "e.g. fr, de" }
-      - { label: "Language Name", name: "name", widget: "string", hint: "e.g. Français, Deutsch" }
-      - { label: "Flag Emoji", name: "flag", widget: "string" }
