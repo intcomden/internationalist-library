@@ -1,0 +1,52 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+
+backend:
+  name: github
+  repo: YOUR_GITHUB_USERNAME/YOUR_REPO_NAME   # ← CHANGE THIS (e.g. denver123/leftcom-library)
+  branch: main                               # Usually "main" on GitHub Pages
+
+# Optional: Where uploaded PDFs and media will be stored
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+# Collections – These define what you can edit in the CMS
+collections:
+  # 1. Main Site Settings (optional – for homepage text, etc.)
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - name: "general"
+        label: "General Settings"
+        file: "data/settings.yml"
+        fields:
+          - { label: "Site Title", name: "site_title", widget: "string", default: "Internationalist Communist Library" }
+
+  # 2. Reading Lists (you can manage lists as Markdown or YAML files)
+  - name: "reading_lists"
+    label: "Reading Lists"
+    folder: "content/reading-lists"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: true }
+      - { label: "Language", name: "language", widget: "select", options: ["en", "pt", "es", "it", "fr", "de"] }
+      - { label: "Section", name: "section", widget: "string" }   # e.g. "Critique of Political Economy"
+      - { label: "Content", name: "body", widget: "markdown" }
+      - { label: "PDF File", name: "pdf", widget: "file", media_library: { config: { multiple: false } } }
+
+  # 3. Individual Texts / Resources (for adding new books or pamphlets easily)
+  - name: "texts"
+    label: "Individual Texts & Resources"
+    folder: "content/texts"
+    create: true
+    slug: "{{year}}-{{month}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: true }
+      - { label: "Author", name: "author", widget: "string" }
+      - { label: "Language", name: "language", widget: "select", options: ["en", "pt", "es"] }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "PDF Download", name: "pdf_url", widget: "file" }
+      - { label: "Audiobook Link", name: "audiobook", widget: "string" }
+      - { label: "Tags", name: "tags", widget: "list", default: ["leftcom"] }
+
+  # You can add more collections later (e.g., for announcements, glossary, etc.)
