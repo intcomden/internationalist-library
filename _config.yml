@@ -34,3 +34,6 @@ exclude:
   - Gemfile.lock
   - README.md
   - .gitignore
+
+baseurl: "/internationalist-library"   # ← Add this line
+url: "https://intcomden.github.io"
