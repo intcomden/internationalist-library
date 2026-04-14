@@ -33,3 +33,5 @@ collections:
       - { label: "Language", name: "language", widget: "select", options: ["en", "pt", "es", "it"] }
       - { label: "PDF File", name: "pdf", widget: "file" }
       - { label: "Audiobook Link", name: "audiobook", widget: "string" }
+
+repo: intcomden/internationalist-library
