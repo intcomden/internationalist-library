@@ -1,12 +1,15 @@
 backend:
   name: github
-  repo: intcomden/internationalist-library   # ← Correct repo
+  repo: intcomden/internationalist-library
   branch: main
+
+# Enable token-based login (this usually fixes the stuck "Sign in with GitHub" problem)
+auth_method: token
 
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
 
-# Important for project sites (subfolder)
+# Required for project sites (your site is in a subfolder)
 site_url: "/internationalist-library"
 
 collections:
