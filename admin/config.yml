@@ -1,8 +1,13 @@
-YAMLtitle: Internationalist Communist Library
-description: Official shared library for the Internationalist Communist Discord server
+backend:
+  name: github
+  repo: intcomden/internationalist-library   # ← Correct repo
+  branch: main
 
-baseurl: "/internationalist-library"
-url: "https://intcomden.github.io"
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+# Important for project sites (subfolder)
+site_url: "/internationalist-library"
 
 collections:
   - name: "sections"
@@ -13,9 +18,9 @@ collections:
     slug: "{{language}}-{{slug}}"
     fields:
       - { label: "Section Title", name: "title", widget: "string", required: true }
-      - { label: "Language", name: "language", widget: "select", options: ["en", "pt", "es", "it", "fr", "de"], default: "en" }
+      - { label: "Language", name: "language", widget: "select", options: ["en", "pt", "es", "it"], default: "en" }
       - { label: "Order", name: "order", widget: "number", default: 10 }
-      - { label: "Content (Markdown List)", name: "body", widget: "markdown", required: true }
+      - { label: "Content (Markdown)", name: "body", widget: "markdown", required: true }
 
   - name: "texts"
     label: "Individual Texts"
@@ -26,5 +31,5 @@ collections:
       - { label: "Title", name: "title", widget: "string", required: true }
       - { label: "Author", name: "author", widget: "string" }
       - { label: "Language", name: "language", widget: "select", options: ["en", "pt", "es", "it"] }
-      - { label: "PDF", name: "pdf", widget: "file" }
+      - { label: "PDF File", name: "pdf", widget: "file" }
       - { label: "Audiobook Link", name: "audiobook", widget: "string" }
