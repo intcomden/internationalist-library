@@ -2,9 +2,34 @@ backend:
   name: github
   repo: intcomden/internationalist-library
   branch: main
+  base_url: https://intcomden-cms-auth.internationalcommunistpartyden.workers.dev/   # ← Put your actual Worker URL here
 
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
 
-# This enables the token login option
-auth_method: token   # Important line for PAT support
+site_url: "/internationalist-library"
+
+collections:
+  - name: "sections"
+    label: "Reading Sections"
+    folder: "_sections"
+    create: true
+    extension: "md"
+    slug: "{{language}}-{{slug}}"
+    fields:
+      - { label: "Section Title", name: "title", widget: "string", required: true }
+      - { label: "Language", name: "language", widget: "select", options: ["en", "pt", "es", "it"], default: "en" }
+      - { label: "Order", name: "order", widget: "number", default: 10 }
+      - { label: "Content (Markdown)", name: "body", widget: "markdown", required: true }
+
+  - name: "texts"
+    label: "Individual Texts"
+    folder: "_texts"
+    create: true
+    extension: "md"
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: true }
+      - { label: "Author", name: "author", widget: "string" }
+      - { label: "Language", name: "language", widget: "select", options: ["en", "pt", "es", "it"] }
+      - { label: "PDF File", name: "pdf", widget: "file" }
+      - { label: "Audiobook Link", name: "audiobook", widget: "string" }
