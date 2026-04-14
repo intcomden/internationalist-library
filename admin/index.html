@@ -4,6 +4,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin • Internationalist Communist Library</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #1e1e1e; color: #ddd; text-align: center; padding: 100px 20px; }
+    input { padding: 12px; font-size: 1.1em; width: 300px; margin: 20px; }
+    button { padding: 12px 24px; font-size: 1.1em; background: #e63939; color: white; border: none; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>🔒 Admin Access</h1>
+  <p>Enter the shared moderator password</p>
+  <input type="password" id="pass" placeholder="Password">
+  <br>
+  <button onclick="checkPassword()">Enter Admin Panel</button>
+
+  <script>
+    function checkPassword() {
+      const input = document.getElementById('pass').value;
+      // Change this to your chosen password (use a strong one)
+      const correctHash = "your-hashed-password-here"; // We'll generate this
+
+      // Simple hash example (replace with real hash)
+      if (btoa(input) === "your-base64-hash") {   // Example only
+        window.location.href = "https://intcomden.github.io/internationalist-library/admin/real-admin.html"; // or load CMS
+      } else {
+        alert("Incorrect password");
+      }
+    }
+  </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin • Internationalist Communist Library</title>
   <script src="https://unpkg.com/@sveltia/cms@latest/dist/sveltia-cms.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/@sveltia/cms@latest/dist/sveltia-cms.css">
   <style>
