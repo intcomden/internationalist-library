@@ -1,56 +1,35 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Biblioteca Comunista Internacionalista</title>
-  <style>
-    body { 
-      font-family: Arial, Helvetica, sans-serif; 
-      margin: 0; 
-      padding: 40px; 
-      background: #f4f4f4; 
-      color: #222;
-      line-height: 1.6;
-    }
-    .container { 
-      max-width: 1000px; 
-      margin: auto; 
-      background: white; 
-      padding: 40px; 
-      border-radius: 8px; 
-      box-shadow: 0 0 15px rgba(0,0,0,0.1); 
-    }
-    h1 { color: #b71c1c; text-align: center; }
-    h2 { color: #b71c1c; border-bottom: 2px solid #b71c1c; padding-bottom: 8px; margin-top: 40px; }
-    .nav { text-align: center; margin-bottom: 30px; font-size: 1.1em; }
-    .nav a { margin: 0 15px; color: #b71c1c; text-decoration: none; }
-    .nav a:hover { text-decoration: underline; }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="nav">
-      <a href="/">&larr; English Homepage</a> |
-      <a href="/pt/">Português</a> |
-      <a href="/es/">Español</a> |
-      <a href="/it/">Italiano</a>
-    </div>
+---
+layout: default
+title: Biblioteca Comunista Internacionalista
+language: es
+---
 
-    <h1>☭ Biblioteca Comunista Internacionalista ☭</h1>
-    <p style="text-align: center;"><strong>Bienvenido a la biblioteca oficial del servidor Discord Comunista Internacionalista</strong></p>
+<div class="nav">
+  <a href="{{ site.baseurl }}/">🇬🇧 English</a> |
+  <a href="{{ site.baseurl }}/pt/">🇧🇷 Português</a> |
+  <a href="{{ site.baseurl }}/es/">🇪🇸 Español</a> |
+  <a href="{{ site.baseurl }}/it/">🇮🇹 Italiano</a>
+</div>
 
-    <!-- Sections will be added here via CMS or manually later -->
-    <h2>Secciones de la Biblioteca</h2>
-    <p>Esta página se completará con las listas de lectura próximamente. Mientras tanto, usa el panel administrativo para añadir contenidos.</p>
+<h1>☭ Biblioteca Comunista Internacionalista ☭</h1>
+<p style="text-align: center; font-size: 1.1em;">
+  <strong>Bienvenido a la biblioteca oficial del servidor Discord Comunista Internacionalista</strong>
+</p>
 
-    <p style="text-align: center; margin-top: 50px;">
-      <a href="/admin/" target="_blank">🔧 Abrir Panel Administrativo (Moderadores)</a>
-    </p>
-  </div>
-</body>
-</html>
+<h2>Secciones de la Biblioteca</h2>
+
+{% assign lang_sections = site.sections | where: "language", "es" | sort: "order" %}
+
+{% if lang_sections.size > 0 %}
+  <ul>
+    {% for section in lang_sections %}
+      <li><a href="{{ site.baseurl }}{{ section.url }}">{{ section.title }}</a></li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>Aún no se han añadido secciones.</p>
+{% endif %}
 
 <p style="text-align: center; margin-top: 60px; font-size: 1.1em;">
-  <a href="/admin/" target="_blank">🔧 Open Admin Panel – Add/Edit Sections & Upload Resources</a>
+  <a href="{{ site.baseurl }}/admin/" target="_blank">🔧 Abrir Panel Administrativo (Moderadores)</a>
 </p>
