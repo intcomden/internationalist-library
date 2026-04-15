@@ -2,7 +2,40 @@
 layout: default
 ---
 
-<h1>{{ page.title }}</h1>
-<div class="section-content">
-  {{ content }}
+<div class="nav">
+  <a href="{{ site.baseurl }}/">🏠 Home</a> |
+  <a href="{{ site.baseurl }}/{{ page.language }}/">← Back to {{ page.language | upcase }} Library</a>
 </div>
+
+<h1>{{ page.title }}</h1>
+
+{{ content }}
+
+<!-- PDF Section -->
+{% if page.pdfs and page.pdfs.size > 0 %}
+  <h2>PDFs Disponíveis / Disponibles / Disponibili</h2>
+  {% for pdf in page.pdfs %}
+    <div style="margin: 20px 0; padding: 20px; border: 1px solid #555; border-radius: 8px; background: #2d2d2d;">
+      <strong>{{ pdf.display_name | default: pdf.filename }}</strong><br><br>
+      
+      <a href="{{ site.baseurl }}/assets/uploads/{{ pdf.filename }}" 
+         target="_blank" 
+         style="color: #e63939; font-size: 1.2em; font-weight: bold;">
+        ⬇️ Download PDF
+      </a>
+      
+      <br><br>
+      <iframe src="{{ site.baseurl }}/assets/uploads/{{ pdf.filename }}" 
+              width="100%" 
+              height="700px" 
+              style="border: 1px solid #666; background: white;">
+      </iframe>
+    </div>
+  {% endfor %}
+{% endif %}
+
+<p style="text-align: center; margin-top: 50px;">
+  <a href="{{ site.baseurl }}/{{ page.language }}/" style="font-size: 1.1em;">
+    ← Return to {{ page.language | upcase }} Main Library Page
+  </a>
+</p>
