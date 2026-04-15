@@ -2,7 +2,7 @@ backend:
   name: github
   repo: intcomden/internationalist-library
   branch: main
-  base_url: https://intcomden-cms-auth.internationalcommunistpartyden.workers.dev/   # ← Put your actual Worker URL here
+  base_url: https://YOUR-WORKER-NAME.yourname.workers.dev   # ← update if using Cloudflare Worker
 
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
@@ -21,15 +21,8 @@ collections:
       - { label: "Language", name: "language", widget: "select", options: ["en", "pt", "es", "it"], default: "en" }
       - { label: "Order", name: "order", widget: "number", default: 10 }
       - { label: "Content (Markdown)", name: "body", widget: "markdown", required: true }
-
-  - name: "texts"
-    label: "Individual Texts"
-    folder: "_texts"
-    create: true
-    extension: "md"
-    fields:
-      - { label: "Title", name: "title", widget: "string", required: true }
-      - { label: "Author", name: "author", widget: "string" }
-      - { label: "Language", name: "language", widget: "select", options: ["en", "pt", "es", "it"] }
-      - { label: "PDF File", name: "pdf", widget: "file" }
-      - { label: "Audiobook Link", name: "audiobook", widget: "string" }
+      - { label: "PDF Files", name: "pdfs", widget: "list", 
+          fields: [
+            { label: "PDF Filename", name: "filename", widget: "file", media_folder: "assets/uploads" },
+            { label: "Display Name", name: "display_name", widget: "string" }
+          ] }
