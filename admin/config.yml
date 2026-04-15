@@ -2,7 +2,6 @@ backend:
   name: github
   repo: intcomden/internationalist-library
   branch: main
-  base_url: https://YOUR-WORKER-NAME.yourname.workers.dev   # ← update if using Cloudflare Worker
 
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
@@ -18,11 +17,12 @@ collections:
     slug: "{{language}}-{{slug}}"
     fields:
       - { label: "Section Title", name: "title", widget: "string", required: true }
-      - { label: "Language", name: "language", widget: "select", options: ["en", "pt", "es", "it"], default: "en" }
+      - { label: "Language", name: "language", widget: "select", options: ["en", "pt", "es", "it", "nl", "de", "el"], default: "en" }
       - { label: "Order", name: "order", widget: "number", default: 10 }
-      - { label: "Content (Markdown)", name: "body", widget: "markdown", required: true }
-      - { label: "PDF Files", name: "pdfs", widget: "list", 
+      - { label: "Main Content", name: "body", widget: "markdown", required: true }
+      - { label: "Embedded PDFs", name: "embedded_pdfs", widget: "list", 
           fields: [
-            { label: "PDF Filename", name: "filename", widget: "file", media_folder: "assets/uploads" },
-            { label: "Display Name", name: "display_name", widget: "string" }
-          ] }
+            { label: "PDF File", name: "filename", widget: "file", media_folder: "assets/uploads" },
+            { label: "Title / Caption", name: "caption", widget: "string" },
+            { label: "Position", name: "position", widget: "select", options: ["after_title", "middle", "end"], default: "end" }
+          ]}
