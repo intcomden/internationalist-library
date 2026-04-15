@@ -21,6 +21,38 @@ language: pt
 {% assign lang_sections = site.sections | where: "language", "pt" | sort: "order" %}
 
 {% for section in lang_sections %}
+  <div style="margin: 20px 0; padding: 15px; border-left: 4px solid #e63939;">
+    <h3><a href="{{ site.baseurl }}{{ section.url }}">{{ section.title }}</a></h3>
+    {{ section.content | markdownify | truncatewords: 50 }}
+    <p><a href="{{ site.baseurl }}{{ section.url }}">→ Ver seção completa</a></p>
+  </div>
+{% endfor %}
+
+<p style="text-align: center; margin-top: 60px;">
+  <a href="{{ site.baseurl }}/admin/" target="_blank">🔧 Abrir Painel Administrativo (Moderadores)</a>
+</p>---
+layout: default
+title: Biblioteca Comunista Internacionalista
+language: pt
+---
+
+<div class="nav">
+  <a href="{{ site.baseurl }}/">🇬🇧 English</a> |
+  <a href="{{ site.baseurl }}/pt/">🇧🇷 Português</a> |
+  <a href="{{ site.baseurl }}/es/">🇪🇸 Español</a> |
+  <a href="{{ site.baseurl }}/it/">🇮🇹 Italiano</a>
+</div>
+
+<h1>☭ Biblioteca Comunista Internacionalista ☭</h1>
+<p style="text-align: center; font-size: 1.1em;">
+  <strong>Bem-vindo à biblioteca oficial do servidor Discord Comunista Internacionalista</strong>
+</p>
+
+<h2>Seções da Biblioteca</h2>
+
+{% assign lang_sections = site.sections | where: "language", "pt" | sort: "order" %}
+
+{% for section in lang_sections %}
   <div class="section" style="margin-bottom: 50px;">
     <h2><a href="{{ site.baseurl }}{{ section.url }}">{{ section.title }}</a></h2>
     {{ section.content | markdownify }}
