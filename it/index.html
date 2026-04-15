@@ -21,26 +21,15 @@ language: it
 {% assign lang_sections = site.sections | where: "language", "it" | sort: "order" %}
 
 {% for section in lang_sections %}
-  <div class="section" style="margin-bottom: 50px;">
-    <h2><a href="{{ site.baseurl }}{{ section.url }}">{{ section.title }}</a></h2>
-    {{ section.content | markdownify }}
-
-    {% if section.pdfs and section.pdfs.size > 0 %}
-      <h3>PDF Disponibili:</h3>
-      {% for pdf in section.pdfs %}
-        <div style="margin: 15px 0; padding: 15px; border: 1px solid #555; border-radius: 6px; background: #2d2d2d;">
-          <strong>{{ pdf.display_name | default: pdf.filename }}</strong><br><br>
-          <a href="{{ site.baseurl }}/assets/uploads/{{ pdf.filename }}" 
-             target="_blank" 
-             style="color: #e63939; font-weight: bold; font-size: 1.1em;">
-            ⬇️ Scarica PDF
-          </a>
-        </div>
-      {% endfor %}
-    {% endif %}
+  <div style="margin: 25px 0; padding: 20px; border-left: 5px solid #e63939; background: #2d2d2d;">
+    <h3><a href="{{ site.baseurl }}{{ section.url }}">{{ section.title }}</a></h3>
+    {{ section.content | markdownify | truncatewords: 60 }}
+    <p style="margin-top: 15px;">
+      <a href="{{ site.baseurl }}{{ section.url }}">→ Leggi sezione completa</a>
+    </p>
   </div>
 {% endfor %}
 
-<p style="text-align: center; margin-top: 60px;">
+<p style="text-align: center; margin-top: 70px; font-size: 1.1em;">
   <a href="{{ site.baseurl }}/admin/" target="_blank">🔧 Apri Pannello Amministrativo (Moderatori)</a>
 </p>
