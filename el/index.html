@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Διεθνιστική Κομμουνιστική Βιβλιοθήκ
+title: Internationalist Communist Library
 language: el
 ---
 
@@ -14,25 +14,23 @@ language: el
   <a href="{{ site.baseurl }}/el/">🇬🇷 Ελληνικά</a>
 </div>
 
-<h1>☭ Διεθνιστική Κομμουνιστική Βιβλιοθήκη ☭</h1>
+<h1>☭ Internationalist Communist Library ☭</h1>
 <p style="text-align: center; font-size: 1.1em;">
-  Καλώς ορίσατε στην επίσημη κοινόχρηστη βιβλιοθήκη για τον διακομιστή Διεθνιστών Κομμουνιστών
+  Καλώς ήρθατε στην επίσημη βιβλιοθήκη του Internationalist Communist Discord server
 </p>
 
-<h2>Library Sections</h2>
+<h2>Τμήματα της Βιβλιοθήκης</h2>
 
-{% assign lang_sections = site.sections | where: "language", "en" | sort: "order" %}
+{% assign lang_sections = site.sections | where: "language", "el" | sort: "order" %}
 
 {% for section in lang_sections %}
-  <div style="margin: 25px 0; padding: 20px; border-left: 5px solid #e63939; background: #2d2d2d;">
+  <div style="margin: 25px 0; padding: 20px; border-left: 5px solid #e63939;">
     <h3><a href="{{ site.baseurl }}{{ section.url }}">{{ section.title }}</a></h3>
     {{ section.content | markdownify | truncatewords: 60 }}
-    <p style="margin-top: 15px;">
-      <a href="{{ site.baseurl }}{{ section.url }}">→ Read full section</a>
-    </p>
+    <p><a href="{{ site.baseurl }}{{ section.url }}">→ Δείτε την πλήρη ενότητα</a></p>
   </div>
 {% endfor %}
 
-<p style="text-align: center; margin-top: 70px;">
-  <a href="{{ site.baseurl }}/admin/" target="_blank">🔧 Άνοιγμα Πίνακα Διαχείρισης (Μόνο για Επόπτες))</a>
+<p style="text-align: center; margin-top: 60px;">
+  <a href="{{ site.baseurl }}/admin/" target="_blank">🔧 Άνοιγμα Πίνακα Διαχείρισης (Διαχειριστές)</a>
 </p>
