@@ -6,7 +6,7 @@ url: "https://intcomden.github.io"
 
 collections:
   sections:
-    output: false
+    output: true
 
 defaults:
   - scope:
