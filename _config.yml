@@ -3,5 +3,6 @@ baseurl: "/internationalist-library"
 url: "https://intcomden.github.io"
 
 collections:
-  sections:
+  texts:
     output: true
+    permalink: "/:language/:slug/"
