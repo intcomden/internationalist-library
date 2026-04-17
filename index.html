@@ -21,18 +21,16 @@ language: en
 
 <h2>Library Sections</h2>
 
-{% assign lang_sections = site.sections | where: "language", "en" | sort: "order" %}
+{% assign lang_texts = site.texts | where: "language", "en" | sort: "title" %}
 
-{% for section in lang_sections %}
-  <div style="margin: 25px 0; padding: 20px; border-left: 5px solid #e63939; background: #2d2d2d;">
-    <h3><a href="{{ site.baseurl }}{{ section.url }}">{{ section.title }}</a></h3>
-    {{ section.content | markdownify | truncatewords: 60 }}
-    <p style="margin-top: 15px;">
-      <a href="{{ site.baseurl }}{{ section.url }}">→ Read full section</a>
-    </p>
+{% for text in lang_texts %}
+  <div style="margin: 20px 0; padding: 18px; border-left: 5px solid #e63939;">
+    <h3><a href="{{ site.baseurl }}{{ text.url }}">{{ text.title }}</a></h3>
+    {% if text.author %}<p><strong>{{ text.author }}</strong></p>{% endif %}
+    {% if text.description %}<p>{{ text.description }}</p>{% endif %}
   </div>
 {% endfor %}
 
-<p style="text-align: center; margin-top: 70px;">
+<p style="text-align: center; margin-top: 60px;">
   <a href="{{ site.baseurl }}/admin/" target="_blank">🔧 Open Admin Panel (Moderators only)</a>
 </p>
