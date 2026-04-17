@@ -14,25 +14,23 @@ language: nl
   <a href="{{ site.baseurl }}/el/">🇬🇷 Ελληνικά</a>
 </div>
 
-<h1>☭ Internationalistische Communistische Bibliotheeky ☭</h1>
+<h1>☭ Internationalist Communist Library ☭</h1>
 <p style="text-align: center; font-size: 1.1em;">
-  Welkom bij de officiële gedeelde bibliotheek van de Internationalist Communist Discord-server.
+  Welkom bij de officiële bibliotheek van de Internationalist Communist Discord server
 </p>
 
-<h2>Library Sections</h2>
+<h2>Bibliotheek Secties</h2>
 
 {% assign lang_sections = site.sections | where: "language", "nl" | sort: "order" %}
 
 {% for section in lang_sections %}
-  <div style="margin: 25px 0; padding: 20px; border-left: 5px solid #e63939; background: #2d2d2d;">
+  <div style="margin: 25px 0; padding: 20px; border-left: 5px solid #e63939;">
     <h3><a href="{{ site.baseurl }}{{ section.url }}">{{ section.title }}</a></h3>
     {{ section.content | markdownify | truncatewords: 60 }}
-    <p style="margin-top: 15px;">
-      <a href="{{ site.baseurl }}{{ section.url }}">→ Read full section</a>
-    </p>
+    <p><a href="{{ site.baseurl }}{{ section.url }}">→ Volledige sectie bekijken</a></p>
   </div>
 {% endfor %}
 
-<p style="text-align: center; margin-top: 70px;">
-  <a href="{{ site.baseurl }}/admin/" target="_blank">🔧 Beheerderspaneel openen (alleen moderators)</a>
+<p style="text-align: center; margin-top: 60px;">
+  <a href="{{ site.baseurl }}/admin/" target="_blank">🔧 Open Admin Panel (Moderators)</a>
 </p>
