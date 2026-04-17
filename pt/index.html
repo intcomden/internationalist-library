@@ -24,15 +24,13 @@ language: pt
 {% assign lang_sections = site.sections | where: "language", "pt" | sort: "order" %}
 
 {% for section in lang_sections %}
-  <div style="margin: 25px 0; padding: 20px; border-left: 5px solid #e63939; background: #2d2d2d;">
+  <div style="margin: 25px 0; padding: 20px; border-left: 5px solid #e63939;">
     <h3><a href="{{ site.baseurl }}{{ section.url }}">{{ section.title }}</a></h3>
     {{ section.content | markdownify | truncatewords: 60 }}
-    <p style="margin-top: 15px;">
-      <a href="{{ site.baseurl }}{{ section.url }}">→ Ver seção completa</a>
-    </p>
+    <p><a href="{{ site.baseurl }}{{ section.url }}">→ Ver seção completa</a></p>
   </div>
 {% endfor %}
 
-<p style="text-align: center; margin-top: 70px;">
+<p style="text-align: center; margin-top: 60px;">
   <a href="{{ site.baseurl }}/admin/" target="_blank">🔧 Abrir Painel Administrativo (Moderadores)</a>
 </p>
