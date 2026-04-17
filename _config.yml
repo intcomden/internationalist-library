@@ -1,11 +1,26 @@
 title: Internationalist Communist Library
+description: Official shared library for the Internationalist Communist Discord server
+
 baseurl: "/internationalist-library"
 url: "https://intcomden.github.io"
 
 collections:
+  sections:
+    output: true
+    permalink: "/:language/:slug/"
+
   texts:
     output: true
     permalink: "/:language/:slug/"
 
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
 
-.
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - .gitignore
