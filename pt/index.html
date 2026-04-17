@@ -5,13 +5,7 @@ language: pt
 ---
 
 <div class="nav">
-  <a href="{{ site.baseurl }}/">🇬🇧 English</a> |
-  <a href="{{ site.baseurl }}/pt/">🇧🇷 Português</a> |
-  <a href="{{ site.baseurl }}/es/">🇪🇸 Español</a> |
-  <a href="{{ site.baseurl }}/it/">🇮🇹 Italiano</a> |
-  <a href="{{ site.baseurl }}/nl/">🇳🇱 Nederlands</a> |
-  <a href="{{ site.baseurl }}/de/">🇩🇪 Deutsch</a> |
-  <a href="{{ site.baseurl }}/el/">🇬🇷 Ελληνικά</a>
+  <a href="{{ site.baseurl }}/">← English Homepage</a>
 </div>
 
 <h1>☭ Biblioteca Comunista Internacionalista ☭</h1>
@@ -19,15 +13,15 @@ language: pt
   <strong>Bem-vindo à biblioteca oficial do servidor Discord Comunista Internacionalista</strong>
 </p>
 
-<h2>Seções da Biblioteca</h2>
+<h2>Textos Disponíveis</h2>
 
-{% assign lang_sections = site.sections | where: "language", "pt" | sort: "order" %}
+{% assign lang_texts = site.texts | where: "language", "pt" | sort: "title" %}
 
-{% for section in lang_sections %}
-  <div style="margin: 25px 0; padding: 20px; border-left: 5px solid #e63939;">
-    <h3><a href="{{ site.baseurl }}{{ section.url }}">{{ section.title }}</a></h3>
-    {{ section.content | markdownify | truncatewords: 60 }}
-    <p><a href="{{ site.baseurl }}{{ section.url }}">→ Ver seção completa</a></p>
+{% for text in lang_texts %}
+  <div style="margin: 20px 0; padding: 18px; border-left: 5px solid #e63939;">
+    <h3><a href="{{ site.baseurl }}{{ text.url }}">{{ text.title }}</a></h3>
+    {% if text.author %}<p><strong>{{ text.author }}</strong></p>{% endif %}
+    {% if text.description %}<p>{{ text.description }}</p>{% endif %}
   </div>
 {% endfor %}
 
