@@ -6,3 +6,6 @@ collections:
   texts:
     output: true
     permalink: "/:language/:slug/"
+
+
+.
