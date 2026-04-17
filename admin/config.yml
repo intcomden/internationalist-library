@@ -9,6 +9,29 @@ public_folder: "/assets/uploads"
 site_url: "/internationalist-library"
 
 collections:
+  - name: "texts"
+    label: "Individual Texts (PDFs)"
+    folder: "_texts"
+    create: true
+    extension: "md"
+    slug: "{{language}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: true }
+      - { label: "Author", name: "author", widget: "string" }
+      - { label: "Language", name: "language", widget: "select", options: ["en", "pt", "es", "it", "nl", "de", "el"], default: "en" }
+      - { label: "PDF File", name: "pdf", widget: "file", required: true }
+      - { label: "Display Name", name: "display_name", widget: "string" }
+      - { label: "Short Description", name: "description", widget: "text" }backend:
+  name: github
+  repo: intcomden/internationalist-library
+  branch: main
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+site_url: "/internationalist-library"
+
+collections:
   - name: "sections"
     label: "Reading Sections"
     folder: "_sections"
