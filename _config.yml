@@ -1,16 +1,7 @@
 title: Internationalist Communist Library
-description: Official shared library for any and all Internationalist Communists
-
 baseurl: "/internationalist-library"
 url: "https://intcomden.github.io"
 
 collections:
   sections:
     output: true
-    permalink: "/:language/:slug/"
-    
-defaults:
-  - scope:
-      path: ""
-    values:
-      layout: "default"
