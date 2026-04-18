@@ -5,11 +5,9 @@ baseurl: "/internationalist-library"
 url: "https://intcomden.github.io"
 
 collections:
-  sections:
-    output: false     # We are not using individual section pages anymore
-
   texts:
     output: true
+    permalink: "/:language/:slug/"
 
 defaults:
   - scope:
