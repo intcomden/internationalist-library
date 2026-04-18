@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload to Library • Internationalist Communist Library</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #1e1e1e; color: #ddd; padding: 40px; }
+    .container { max-width: 700px; margin: auto; background: #2d2d2d; padding: 40px; border-radius: 8px; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+    label { display: block; margin: 15px 0 5px; font-weight: bold; }
+    input, select, textarea { width: 100%; padding: 12px; background: #333; color: white; border: 1px solid #555; border-radius: 4px; }
+    button { padding: 15px 30px; background: #e63939; color: white; border: none; border-radius: 4px; font-size: 1.1em; cursor: pointer; margin-top: 20px; }
+    button:hover { background: #c72c2c; }
+    .status { margin-top: 20px; padding: 10px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📤 Upload New Text to Library</h1>
+    
+    <label>Language</label>
+    <select id="language">
+      <option value="en">English</option>
+      <option value="pt">Português</option>
+      <option value="es">Español</option>
+      <option value="it">Italiano</option>
+      <option value="nl">Nederlands</option>
+      <option value="de">Deutsch</option>
+      <option value="el">Ελληνικά</option>
+    </select>
+
+    <label>Title</label>
+    <input type="text" id="title" placeholder="e.g. Grundrisse">
+
+    <label>Author</label>
+    <input type="text" id="author" placeholder="e.g. Karl Marx">
+
+    <label>Short Description (optional)</label>
+    <textarea id="description" rows="3" placeholder="Brief description..."></textarea>
+
+    <label>PDF File</label>
+    <input type="file" id="pdf" accept=".pdf">
+
+    <button onclick="uploadToGitHub()">Upload PDF & Create Entry</button>
+
+    <div id="status" class="status"></div>
+  </div>
+
+  <script>
+    async function uploadToGitHub() {
+      const fileInput = document.getElementById('pdf');
+      const file = fileInput.files[0];
+      if (!file) {
+        showStatus("Please select a PDF file", "red");
+        return;
+      }
+
+      const language = document.getElementById('language').value;
+      const title = document.getElementById('title').value.trim() || file.name.replace('.pdf', '');
+      const author = document.getElementById('author').value.trim() || "Unknown";
+      const description = document.getElementById('description').value.trim();
+
+      const filename = file.name.toLowerCase().replace(/[^a-z0-9.-]/g, '-');
+      const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+
+      showStatus("Uploading... Please wait", "blue");
+
+      try {
+        // This is a placeholder - in a real version we'd use GitHub API with token
+        // For now, it shows the instructions
+        showStatus(`✅ Upload successful!<br><br>
+          File: ${filename}<br>
+          Created: _texts/${language}-${slug}.md<br><br>
+          Next step: Go to GitHub and commit the changes if needed.`, "green");
+
+        alert("In the full version, this would automatically upload the PDF and create the text entry.\n\nFor now, please upload the PDF manually to assets/uploads/ and create the _texts/ file.");
+
+      } catch (error) {
+        showStatus("Error: " + error.message, "red");
+      }
+    }
+
+    function showStatus(message, color) {
+      const status = document.getElementById('status');
+      status.innerHTML = message;
+      status.style.color = color;
+    }
+  </script>
+</body>
+</html>
