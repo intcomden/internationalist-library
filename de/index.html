@@ -17,16 +17,14 @@ language: de
 
 {% assign lang_texts = site.texts | where: "language", "de" | sort: "title" %}
 
-{% if lang_texts.size > 0 %}
-  {% for text in lang_texts %}
-    <div style="margin: 20px 0; padding: 18px; border-left: 5px solid #e63939;">
-      <h3><a href="{{ site.baseurl }}{{ text.url }}">{{ text.title }}</a></h3>
-      {% if text.author %}<p><strong>{{ text.author }}</strong></p>{% endif %}
-      {% if text.description %}<p>{{ text.description }}</p>{% endif %}
-    </div>
-  {% endfor %}
-{% else %}
-  <p>Es wurden noch keine Texte hinzugefügt.</p>
-{% endif %}
+{% for text in lang_texts %}
+  <div style="margin: 20px 0; padding: 18px; border-left: 5px solid #e63939;">
+    <h3><a href="{{ site.baseurl }}{{ text.url }}">{{ text.title }}</a></h3>
+    {% if text.author %}<p><strong>{{ text.author }}</strong></p>{% endif %}
+    {% if text.description %}<p>{{ text.description }}</p>{% endif %}
+  </div>
+{% endfor %}
 
- <a href="{{ site.baseurl }}/admin/upload.html" target="_blank">📤 Inhalte hochladen (nur Content-Team)</a>
+<p style="text-align: center; margin-top: 60px;">
+  <a href="{{ site.baseurl }}/admin/upload.html" target="_blank">📤 Neue Datei hochladen (Content-Team)</a>
+</p>
