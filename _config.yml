@@ -9,8 +9,9 @@ collections:
     output: true
     permalink: "/:language/:slug/"
 
-  sections:
-    output: false   # Disable individual section pages to avoid the error
+# Disable sections to stop the error
+sections:
+  output: false
 
 defaults:
   - scope:
@@ -23,3 +24,4 @@ exclude:
   - Gemfile.lock
   - README.md
   - .gitignore
+  - .nojekyll
