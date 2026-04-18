@@ -1,8 +1,8 @@
 ---
-title: big muss test
-author: il duce
+title: test
+author: test
 language: en
-pdf: /assets/uploads/220px-Mussolini_biografia-3171196670.jpg
-display_name: il muss grande
-description: un wey chingon
+pdf: /assets/uploads/dnd charsheet moi.pdf
+display_name: test
+description: chinga tu madre
 ---
