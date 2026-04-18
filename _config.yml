@@ -7,7 +7,7 @@ url: "https://intcomden.github.io"
 collections:
   texts:
     output: true
-    permalink: "/:language/:slug/"
+    # Removed the problematic permalink line to stop the error
 
 defaults:
   - scope:
@@ -20,3 +20,4 @@ exclude:
   - Gemfile.lock
   - README.md
   - .gitignore
+  - .nojekyll
