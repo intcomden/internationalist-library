@@ -2,9 +2,7 @@ backend:
   name: github
   repo: intcomden/internationalist-library
   branch: main
-  auth_method: token     # This enables the token login option
 
-# This is the key line — make sure uploads go to the correct folder
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
 
@@ -12,7 +10,7 @@ site_url: "/internationalist-library"
 
 collections:
   - name: "texts"
-    label: "Individual Texts (PDFs)"
+    label: "Library Texts"
     folder: "_texts"
     create: true
     extension: "md"
