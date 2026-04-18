@@ -2,6 +2,7 @@ backend:
   name: github
   repo: intcomden/internationalist-library
   branch: main
+  auth_method: token     # This enables the token login option
 
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
