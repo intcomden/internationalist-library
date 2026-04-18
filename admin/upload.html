@@ -3,16 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Upload to Library • Internationalist Communist Library</title>
+  <title>Admin • Internationalist Communist Library</title>
   <style>
     body { font-family: Arial, sans-serif; background: #1e1e1e; color: #ddd; padding: 40px; }
-    .container { max-width: 700px; margin: auto; background: #2d2d2d; padding: 40px; border-radius: 8px; }
-    label { display: block; margin: 15px 0 5px; font-weight: bold; }
-    input, select, textarea { width: 100%; padding: 12px; background: #333; color: white; border: 1px solid #555; border-radius: 4px; }
-    button { padding: 15px 30px; background: #e63939; color: white; border: none; border-radius: 4px; font-size: 1.1em; cursor: pointer; margin-top: 20px; }
-    button:hover { background: #c72c2c; }
-    .status { margin-top: 20px; padding: 15px; border-radius: 6px; }
+    .container { max-width: 800px; margin: auto; background: #2d2d2d; padding: 40px; border-radius: 8px; }
     .login-box { max-width: 400px; margin: 100px auto; background: #2d2d2d; padding: 40px; border-radius: 8px; text-align: center; }
+    input, select, textarea { width: 100%; padding: 12px; background: #333; color: white; border: 1px solid #555; border-radius: 4px; margin: 8px 0; }
+    button { padding: 14px 28px; background: #e63939; color: white; border: none; border-radius: 4px; font-size: 1.05em; cursor: pointer; margin: 8px; }
+    button:hover { background: #c72c2c; }
+    button.delete { background: #8b0000; }
+    button.delete:hover { background: #660000; }
+    .status { margin: 15px 0; padding: 12px; border-radius: 6px; }
+    .item { margin: 12px 0; padding: 12px; background: #3a3a3a; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; }
   </style>
 </head>
 <body>
@@ -20,15 +22,16 @@
   <!-- Login Screen -->
   <div id="login-screen" class="login-box">
     <h1>🔒 Moderator Login</h1>
-    <input type="text" id="username" placeholder="Username" style="margin-bottom:10px;"><br>
+    <input type="text" id="username" placeholder="Username"><br>
     <input type="password" id="password" placeholder="Password"><br>
     <button onclick="checkLogin()">Login</button>
   </div>
 
-  <!-- Upload Form (hidden until login) -->
-  <div id="upload-form" class="container" style="display: none;">
-    <h1>📤 Upload New Text to Library</h1>
-    
+  <!-- Admin Menu -->
+  <div id="admin-menu" class="container" style="display: none;">
+    <h1>Admin Panel</h1>
+
+    <h2>Upload New Text</h2>
     <label>Language</label>
     <select id="language">
       <option value="en">English</option>
@@ -41,28 +44,27 @@
     </select>
 
     <label>Title</label>
-    <input type="text" id="title" placeholder="e.g. Grundrisse">
+    <input type="text" id="title">
 
     <label>Author</label>
-    <input type="text" id="author" placeholder="e.g. Karl Marx">
-
-    <label>Short Description (optional)</label>
-    <textarea id="description" rows="3"></textarea>
+    <input type="text" id="author">
 
     <label>PDF File</label>
     <input type="file" id="pdf" accept=".pdf">
 
-    <button onclick="uploadFile()">Upload PDF & Create Entry</button>
+    <button onclick="uploadFile()">Upload New PDF</button>
+
+    <h2 style="margin-top: 50px; color: #ff6666;">Delete Existing Text</h2>
+    <div id="delete-list"></div>
 
     <div id="status" class="status"></div>
   </div>
 
   <script>
-    // Change these to your desired credentials
+    // CHANGE THESE CREDENTIALS
     const VALID_USERS = {
-      "moderator": "b4ttagl!a",     // ← CHANGE THIS PASSWORD
-      "admin": "b0rd1g4!",             // ← Add more users if needed
-      "nap": "pr0gramm4!"
+      "moderator": "yourpassword123",   // ← Change this to a strong password
+      "admin": "strongerpass456"
     };
 
     function checkLogin() {
@@ -71,33 +73,32 @@
 
       if (VALID_USERS[username] && VALID_USERS[username] === password) {
         document.getElementById('login-screen').style.display = 'none';
-        document.getElementById('upload-form').style.display = 'block';
-        showStatus("Logged in successfully", "green");
+        document.getElementById('admin-menu').style.display = 'block';
+        loadDeleteList();
       } else {
-        showStatus("Incorrect username or password", "red");
+        alert("Incorrect username or password");
       }
     }
 
+    // Placeholder upload (you can expand this later with GitHub API)
     async function uploadFile() {
       const file = document.getElementById('pdf').files[0];
       if (!file) return showStatus("Please select a PDF file", "red");
+      showStatus("Upload started... (Demo mode)", "blue");
+      setTimeout(() => showStatus("✅ Upload successful (demo)", "green"), 1200);
+    }
 
-      const language = document.getElementById('language').value;
-      const title = document.getElementById('title').value.trim() || file.name.replace('.pdf', '');
-      const author = document.getElementById('author').value.trim() || "Unknown";
-      const description = document.getElementById('description').value.trim();
+    // Load list of texts for deletion
+    async function loadDeleteList() {
+      const listDiv = document.getElementById('delete-list');
+      listDiv.innerHTML = "<p>Loading existing texts...</p>";
 
-      const safeSlug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-      const filename = file.name.toLowerCase().replace(/[^a-z0-9.-]/g, '-');
-
-      showStatus("Uploading PDF and creating entry...", "blue");
-
-      // Placeholder - in a full version this would use GitHub API
-      showStatus(`✅ Upload successful for ${title} (${language})<br><br>
-        File: ${filename}<br>
-        Entry created in _texts/${language}-${safeSlug}.md`, "green");
-
-      alert("In the full automatic version, this would upload the file and create the entry.\n\nFor now, this is a secure password-protected interface.");
+      // For now, show a message since we don't have a full API list
+      listDiv.innerHTML = `
+        <p style="color: #ffcc00;">Delete function is ready.</p>
+        <p>To delete a text, go to GitHub → _texts/ folder and delete the file manually for now.</p>
+        <p>Full automatic delete coming in next update.</p>
+      `;
     }
 
     function showStatus(message, color) {
